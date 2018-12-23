@@ -65,3 +65,17 @@ function croot() {
   fi
 }
 
+#Print configured project list
+function projlist() {
+  local projconfig=$(gettop)/config/projects.txt
+  if [ ! -f $projconfig ]; then
+    logerr "Failed to get project list"
+    return
+  fi
+
+  local projlist=$(cat $(gettop)/config/projects.txt)
+
+  for proj in "$projlist"; do
+    echo "$proj"
+  done
+}
