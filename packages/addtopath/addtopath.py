@@ -13,7 +13,9 @@ def getHomeDir():
     return os.path.expanduser('~')
 
 def backupShellConfig():
-    bashrcBkup = mHomedir + '/.bashrc.bkup'
+    bashrcBkup = mHomedir + '/.bashrc.orig'
+    if os.path.exists(bashrcBkup):
+        return
     shutil.copyfile(mBashrc,bashrcBkup)
 
 # Get home dir and bashrc path
